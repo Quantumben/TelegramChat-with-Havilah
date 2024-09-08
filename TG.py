@@ -22,14 +22,14 @@ def main():
     while True:
         updates = get_updates(offset)
         for update in updates['result']:
-            # Extract the message text and chat ID
             message_text = update['message']['text']
             chat_id = update['message']['chat']['id']
 
-            # Respond to the message
-            send_message(chat_id, f'You said: {message_text}')
+            if message_text == '/start':
+                send_message(chat_id, 'Welcome to the bot!')
+            else:
+                send_message(chat_id, f'You said: {message_text}')
 
-            # Update the offset to avoid processing the same message twice
             offset = update['update_id'] + 1
 
 if __name__ == '__main__':
