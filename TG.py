@@ -24,12 +24,14 @@ def main():
         for update in updates['result']:
             message_text = update['message']['text']
             chat_id = update['message']['chat']['id']
-           
+         
             # Using if-elif-else statement
-            if message_text == 'hi':
+            if message_text.lower() == 'hi':
                 send_message(chat_id, 'Hello! Welcome to my world')
-            elif message_text == 'What is your name':
+            elif message_text.lower() == 'What is your name':
                 send_message(chat_id, 'My name is havybot, and I was created by 2 crazy developers Havilah and Quantum Ben')
+            elif message_text.lower() == 'I am hungry':
+                send_message(chat_id,'I am not a food bot , i am a telegram bot...no offence.')
             else:
                 send_message(chat_id, f'Hey unknown, you said: {message_text}')
                
